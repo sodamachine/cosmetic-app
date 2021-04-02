@@ -9,8 +9,12 @@ class UsersController < ApplicationController
 
     post '/users' do
         u = User.create(params[:user])
-        session[:user_id] = u.id
-        redirect "/users/#{@user.id}"
+        if u.id
+            session[:user_id] = u.id
+            redirect "/users/#{@u.id}"
+        else
+            erb :'/users/signup'
+        end
     end
 
     get '/users/:id' do

@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
     #queries db using foreign key
     # ie. #cosmetics
 
+    validates_uniqueness_of(:username)
+
 end 
