@@ -11,7 +11,9 @@ class CosmeticsController < ApplicationController
     end
 
     post '/cosmetics' do
-        @cosmetic = Cosmetic.create(params[:cosmetic])
+        #associates user with cosmetics
+        user = User.find_by(id: session[:user_id])
+        item = user.cosmetics.create(params[:cosmetic])
         #erb :'cosmetics/show'
         #only time to use :id dynamic syntax = set up dynamic routes, otherwise use redirects
         redirect "cosmetics/#{@cosmetic.id}"
