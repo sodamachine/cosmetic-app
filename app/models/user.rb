@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
     has_many :cosmetics 
-    #macro that defines methods based on relationship ie. cosmetics
+    #macro defines methods based on relationship
+    #queries db using foreign key
+    # ie. #cosmetics
 
-end
+end 

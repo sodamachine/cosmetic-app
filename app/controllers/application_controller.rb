@@ -5,6 +5,11 @@ class ApplicationController < Sinatra::Base
         set :public_folder, 'public'
     end
 
+    get('/') do
+        @name = "test"
+        erb :home
+    end
+
     
 
 end
