@@ -18,25 +18,28 @@ class CosmeticsController < ApplicationController
     end
 
     get '/cosmetics/:id' do
-        @cosmetic = Cosmetic.find(params[:id])
+        @cosmetic = Cosmetic.find_by(id: params[:id])
+        #issues handling, use helper
         erb :'cosmetics/show'
     end
 
     #U+D routes below
     get '/cosmetics/:id/edit' do
-        @item = Cosmetic.find(params[:id])
+        @item = Cosmetic.find_by(id: params[:id])
+        #issues handling, use helper
         erb :'cosmetics/edit'
     end
 
     patch '/cosmetics/:id' do
-        @cosmetic = Cosmetic.find(params[:id])
+        @cosmetic = Cosmetic.find_by(id: params[:id])
         @cosmetic.update(params[:cosmetic])
         erb :'cosmetics/show'
     end 
 
     delete '/cosmetics/:id' do
-        @cosmetic = Cosmetic.find(params[:id])
+        @cosmetic = Cosmetic.find_by(id: params[:id])
         @cosmetic.delete
         redirect('/cosmetics')
+    end
 
 end
