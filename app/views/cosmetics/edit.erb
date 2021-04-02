@@ -1,0 +1,11 @@
+<h1>Edit Cosmetic</h1>
+
+
+<form action="/cosmetics/<%=@cosmetic.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label>Cosmetic Name: </label>
+  <input type="text" name="cosmetic[name]" value="<%=@cosmetic.name%>">
+  <label>Cosmetic Brand: </label>
+  <input type="text" name="cosmetic[brand] value="<%=@cosmetic.brand%>">
+  <input type="submit">
+</form>
