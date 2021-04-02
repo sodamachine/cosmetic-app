@@ -1,5 +1,6 @@
 require './config/environment'
 
+use Rack::MethodOverride #to make patch/delete requests
 use UsersController
 use CosmeticsController
 run ApplicationController
