@@ -10,7 +10,7 @@ class CosmeticsController < ApplicationController
     end
 
     post '/cosmetics' do
-        @cosmetic = Cosmetic.create(name: params[:cosmetic][:name])
+        @cosmetic = Cosmetic.create(params[:cosmetic])
         erb :'cosmetics/show'
     end
 
