@@ -3,9 +3,14 @@
 
 <form action="/cosmetics/<%=@cosmetic.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <label>Cosmetic Name: </label>
+  <label>Product Name: </label>
   <input type="text" name="cosmetic[name]" value="<%=@cosmetic.name%>">
-  <label>Cosmetic Brand: </label>
+  <label>Product Brand: </label>
   <input type="text" name="cosmetic[brand] value="<%=@cosmetic.brand%>">
   <input type="submit">
+</form>
+
+<form action="/cosmetics/<%=@cosmetic.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
 </form>
