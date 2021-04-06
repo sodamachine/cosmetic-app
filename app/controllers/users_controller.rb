@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
     get '/users/:id' do
         @user = User.find_by(id: params[:id])
+        @cosmetics = @user.cosmetics
         erb :'users/show'
     end
 

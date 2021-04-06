@@ -1,2 +1,7 @@
 <h1><%=@user.name%>'s Cosmetics</h1>
 
+<ul>
+<% @cosmetics.each do |cosmetic| %>
+    <li><a href="/cosmetics/<%=cosmetic.id %>"><%=cosmetic.name%></a></li>
+<%end%>
+</ul>
