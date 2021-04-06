@@ -1,15 +1,18 @@
 class CosmeticsController < ApplicationController
 
     get '/cosmetics' do
+        redirect_to_login
         @cosmetics = Cosmetic.all
         erb :'cosmetics/index'
     end
 
     get '/cosmetics/new' do
+        redirect_to_login
         erb :'cosmetics/new'
     end
 
     post '/cosmetics' do
+        redirect_to_login
         user = User.find_by(id: session[:user_id])
         #cosmetic = Cosmetic.create(params[:cosmetic])
         cosmetic = user.cosmetics.new(params[:cosmetic])
@@ -22,12 +25,14 @@ class CosmeticsController < ApplicationController
     end
 
     get '/cosmetics/:id' do
+        redirect_to_login
         @cosmetic = Cosmetic.find_by(id: params[:id])
         #issues handling, include helper
         erb :'cosmetics/show'
     end
 
     get '/cosmetics/:id/edit' do
+        redirect_to_login
         @cosmetic = Cosmetic.find_by(id: params[:id])
         if !@cosmetic || @cosmetic.user_id != session[:user_id]
           redirect '/cosmetics'
@@ -36,6 +41,7 @@ class CosmeticsController < ApplicationController
     end
     
     patch '/cosmetics/:id' do
+        redirect_to_login
         @cosmetic = Cosmetic.find_by(id: params[:id])
         if @cosmetic.user_id == session[:user_id]
             @cosmetic.update(params[:cosmetic])
@@ -44,6 +50,7 @@ class CosmeticsController < ApplicationController
     end
 
     delete '/cosmetics/:id' do
+        redirect_to_login
         @cosmetic = Cosmetic.find_by(id: params[:id])
         @cosmetic.delete
         redirect('/cosmetics')

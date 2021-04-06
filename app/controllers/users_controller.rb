@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     end
 
     get '/users/:id' do
+        redirect_to_login
         @user = User.find_by(id: params[:id])
         @cosmetics = @user.cosmetics
         erb :'users/show'
@@ -42,6 +43,7 @@ class UsersController < ApplicationController
     end
 
     get '/users' do
+        redirect_to_login
         @users = User.all
         erb :'users/index'
       end
