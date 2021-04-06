@@ -1,11 +1,7 @@
 class User < ActiveRecord::Base
-    has_many :cosmetics 
-    has_secure_password #password=, authenticate
+    has_many :cosmetics
+    has_secure_password
 
-    #macro defines methods for us based on relationship
-    #queries db using foreign key
-    # ie. #cosmetics
-
-    validates_uniqueness_of(:username)
+    validates_uniqueness_of :username
 
 end 
