@@ -1,11 +1,11 @@
-<h1>All your Faves</h1>
+<h1>My Cosmetics</h1>
 
 <ul>
-<% @faves.each do |fave| %>
-    <li><a href="/faves/<%=fave.id%>">
-    <%=fave.name%>
+<% @cosmetics.each do |cosmetic| %>
+    <li><a href="/cosmetics/<%=cosmetic.id%>">
+    <%=cosmetic.name%>
     </a></li>
 <%end%>
 </ul>
 
-<a href="/users">See all users</a>
+<a href="/users">See all Cosmetics users</a>
