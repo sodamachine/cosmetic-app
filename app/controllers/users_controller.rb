@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     end
 
     post '/users' do
-        u = User.create(params[:user])
-        if u.id
+        u = User.new(params[:user])
+        if u.save
             session[:user_id] = u.id
             redirect "/users/#{@u.id}"
         else

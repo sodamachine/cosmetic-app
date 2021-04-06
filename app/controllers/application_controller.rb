@@ -2,14 +2,18 @@ class ApplicationController < Sinatra::Base
 
     configure do
         set(:views, 'app/views')
-        set :public_folder, 'public'
-        enable :sessions #so that Sinatra can work with browser to store user info via cookie hash
-        set :session_secret, 'secret' #bc shotgun generates new server/request, browser now won't update cookie per new session
+        enable :sessions
+        set :session_secret, 'secret'
     end
 
-    get('/') do
-        @name = "test"
+    get '/' do
         erb :home
     end
+
+    helpers do
+
+        def current_user
+            User.find_by(id: session[:user_id])
+        end
 
 end

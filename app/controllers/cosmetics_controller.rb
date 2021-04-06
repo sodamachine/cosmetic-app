@@ -1,6 +1,5 @@
 class CosmeticsController < ApplicationController
 
-    #C+R routes below
     get '/cosmetics' do
         @cosmetics = Cosmetic.all
         erb :'cosmetics/index'
@@ -11,32 +10,38 @@ class CosmeticsController < ApplicationController
     end
 
     post '/cosmetics' do
-        #associates user with cosmetics
         user = User.find_by(id: session[:user_id])
-        item = user.cosmetics.create(params[:cosmetic])
+        #cosmetic = Cosmetic.create(params[:cosmetic])
+        cosmetic = user.cosmetics.new(params[:cosmetic])
+        if cosmetic.save
+            redirect "/cosmetics/#{@cosmetic.id}"
+        else
+            redirect '/cosmetics/new'
+        end
         #erb :'cosmetics/show'
-        #only time to use :id dynamic syntax = set up dynamic routes, otherwise use redirects
-        redirect "cosmetics/#{@cosmetic.id}"
     end
 
     get '/cosmetics/:id' do
         @cosmetic = Cosmetic.find_by(id: params[:id])
-        #issues handling, use helper
+        #issues handling, include helper
         erb :'cosmetics/show'
     end
 
-    #U+D routes below
     get '/cosmetics/:id/edit' do
-        @item = Cosmetic.find_by(id: params[:id])
-        #issues handling, use helper
+        @cosmetic = Cosmetic.find_by(id: params[:id])
+        if !@cosmetic || @cosmetic.user_id != session[:user_id]
+          redirect '/cosmetics'
+        end
         erb :'cosmetics/edit'
     end
-
+    
     patch '/cosmetics/:id' do
         @cosmetic = Cosmetic.find_by(id: params[:id])
-        @cosmetic.update(params[:cosmetic])
+        if @cosmetic.user_id == session[:user_id]
+            @cosmetic.update(params[:cosmetic])
+        end
         erb :'cosmetics/show'
-    end 
+    end
 
     delete '/cosmetics/:id' do
         @cosmetic = Cosmetic.find_by(id: params[:id])
