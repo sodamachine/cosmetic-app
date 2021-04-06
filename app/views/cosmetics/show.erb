@@ -1,14 +1,15 @@
-<h1>Your Fave</h1>
+<h1><%= @user.username %>'s Cosmetics</h1>
 
-<p><%= @fave.name %> - <%= @fave.brand %></p>
+<p><%= @cosmetic.name %></p>
+<p><%= @cosmetic.brand %></p>
 
-<% if @fave.user_id == session[:user_id] %>
-<form action="/faves/<%=@fave.id%>" method="post">
+<% if @cosmetic.user_id == session[:user_id] %>
+<form action="/cosmetics/<%=@cosmetic.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
 </form>
 
-<a href="/faves/<%=@fave.id%>/edit">Edit this Fave</a>
+<a href="/cosmetics/<%=@cosmetic.id%>/edit">Edit this product</a>
 <%end%>
 
-<a href="/faves">See all your Faves</a>
+<a href="/cosmetics">See all your Cosmetic products</a>
