@@ -13,15 +13,12 @@ class CosmeticsController < ApplicationController
 
     post '/cosmetics' do
         redirect_to_login
-        user = User.find_by(id: session[:user_id])
-        #cosmetic = Cosmetic.create(params[:cosmetic])
-        cosmetic = user.cosmetics.new(params[:cosmetic])
+        cosmetic = current_user.cosmetics.create(params[:cosmetic])
         if cosmetic.save
             redirect "/cosmetics/#{@cosmetic.id}"
         else
             redirect '/cosmetics/new'
         end
-        #erb :'cosmetics/show'
     end
 
     get '/cosmetics/:id' do
