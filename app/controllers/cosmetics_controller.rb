@@ -24,7 +24,7 @@ class CosmeticsController < ApplicationController
     get '/cosmetics/:id' do
         redirect_to_login
         @cosmetic = Cosmetic.find_by(id: params[:id])
-        #issues handling, include helper
+        redirect '/cosmetics' unless @cosmetic
         erb :'cosmetics/show'
     end
 

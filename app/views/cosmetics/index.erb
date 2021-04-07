@@ -1,4 +1,4 @@
-<h1>My Cosmetics</h1>
+<h1>All Cosmetics of all users</h1>
 
 <ul>
 <% @cosmetics.each do |cosmetic| %>
@@ -8,4 +8,7 @@
 <%end%>
 </ul>
 
-<a href="/users">See all Cosmetics users</a>
+<a href="/cosmetics/new">Add a new product to your list</a><br>
+<a href="/users/<%=@user.id%>">See all your products</a><br><br>
+<a href="/users">See all Cosmetics users</a><br>
+<a href="/logout">Log out</a>

@@ -4,9 +4,9 @@
 <form action="/cosmetics/<%=@cosmetic.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <label>Product Name: </label>
-  <input type="text" name="cosmetic[name]" value="<%=@cosmetic.name%>">
+  <input type="text" name="cosmetic[name]" value="<%=@cosmetic.name%>"><br><br>
   <label>Product Brand: </label>
-  <input type="text" name="cosmetic[brand] value="<%=@cosmetic.brand%>">
+  <input type="text" name="cosmetic[brand]" value="<%=@cosmetic.brand%>"><br><br>
   <input type="submit">
 </form>
 
