@@ -8,7 +8,7 @@ bundle install
 ```
 
 ## Usage
-Click this link to see a brief description on how to use the program: YouTube demo of [Cosmetic-App](https://youtu.be/)
+Click this link to see a brief description on how to use the program: YouTube demo of [Cosmetic-App](https://youtu.be/Ub5vooxCNbw)
 
 ## Contributing
 Bug reports and pull requests are welcome via GitHub at [https://github.com/stephohn/cosmetic-app](https://github.com/stephohn/cosmetic-app). 
